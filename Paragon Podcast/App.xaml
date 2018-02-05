@@ -1,0 +1,8 @@
+﻿<Application
+    x:Class="Paragon_Podcast.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Paragon_Podcast"
+    RequestedTheme="Light">
+
+</Application>
