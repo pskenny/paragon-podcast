@@ -1,3 +1,4 @@
+![paragon podcast logo](https://github.com/pskenny/pargon-podcast/blob/master/Resources/paragon%202.png)
 # Pargon Podcast
 Windows 10 Podcast Player, Third Year Software Development project.
 
