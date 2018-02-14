@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Media.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -25,6 +26,21 @@ namespace Paragon_Podcast
         public MainPage()
         {
             this.InitializeComponent();
+            LoadAudio();
         }
+
+        private void LoadAudio()
+        {
+            try
+            {
+                Uri pathUri = new Uri("ms-appx:///Audio/songOfStorms.mp3");
+                player.Source = MediaSource.CreateFromUri(pathUri);
+            }
+            catch (Exception ex)
+            {
+                //TODO catch exception here
+            }
+        }
+
     }
 }

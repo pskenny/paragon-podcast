@@ -7,7 +7,32 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="#FF666666">
+
+        <MediaPlayerElement 
+            x:Name="player"
+            AutoPlay="False"
+            AreTransportControlsEnabled="True" 
+            Margin="470,3,42,-1" Background="#FF323232">
+
+            <MediaPlayerElement.TransportControls>
+                <MediaTransportControls 
+                    IsCompact = "True"
+                    IsFullWindowButtonVisible = "False"
+                    IsZoomButtonVisible = "False" Margin="0,921,0,30" Background="#FF632A2A"/>
+            </MediaPlayerElement.TransportControls>
+
+        </MediaPlayerElement>
+        <StackPanel HorizontalAlignment="Left" Height="750" Margin="25,220,0,0" VerticalAlignment="Top" Width="386" Background="#FCC3C3C3">
+            <StackPanel Height="100"/>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" Height="680" Margin="470,220,0,0" VerticalAlignment="Top" Width="990" Background="#FFC3C3C3"/>
+        <StackPanel HorizontalAlignment="Left" Height="144" Margin="-20,40,0,0" VerticalAlignment="Top" Width="1022">
+            <StackPanel.Background>
+                <ImageBrush ImageSource="Assets/Logo.png"/>
+            </StackPanel.Background>
+        </StackPanel>
+
 
     </Grid>
 </Page>
