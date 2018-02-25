@@ -24,9 +24,34 @@
 
         </MediaPlayerElement>
         <StackPanel HorizontalAlignment="Left" Height="750" Margin="25,220,0,0" VerticalAlignment="Top" Width="386" Background="#FCC3C3C3">
-            <StackPanel Height="100"/>
+
+            <ListView x:Name="LVchannelList" IsItemClickEnabled="True" ItemClick="LVchannelList_ItemClick">
+            <ListView.ItemTemplate>
+
+                <DataTemplate>
+                        <Grid>
+                        <TextBlock Text="{Binding title}"></TextBlock>
+                        </Grid>
+                    </DataTemplate>
+
+            </ListView.ItemTemplate>
+            </ListView>
         </StackPanel>
-        <StackPanel HorizontalAlignment="Left" Height="680" Margin="470,220,0,0" VerticalAlignment="Top" Width="990" Background="#FFC3C3C3"/>
+        <StackPanel HorizontalAlignment="Left" Height="680" Margin="470,220,0,0" VerticalAlignment="Top" Width="990" Background="#FFC3C3C3">
+
+            <ListView x:Name="LVepisodeList" IsItemClickEnabled="True">
+                <ListView.ItemTemplate>
+
+                    <DataTemplate>
+                        <Grid>
+                            <TextBlock Text="{Binding title}"></TextBlock>
+                        </Grid>
+                    </DataTemplate>
+
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackPanel>
         <StackPanel HorizontalAlignment="Left" Height="144" Margin="-20,40,0,0" VerticalAlignment="Top" Width="1022">
             <StackPanel.Background>
                 <ImageBrush ImageSource="Assets/Logo.png"/>
