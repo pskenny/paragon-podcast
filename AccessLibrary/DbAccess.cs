@@ -55,15 +55,13 @@ namespace AccessLibrary
             {
                 db.Open();
                 // create channels and episodes table
+                
 
-                String tableCommand = "CREATE TABLE IF NOT " +
-                    "EXISTS channels (" +
-                    "Primary_Key INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    "Text_Entry NVARCHAR(2048) NULL)";
+                SqliteCommand createChannelsTable = new SqliteCommand(SQL_CREATE_CHANNELS_TABLE, db);
+                SqliteCommand createEpisodesTable = new SqliteCommand(SQL_CREATE_EPISODES_TABLE, db);
 
-                SqliteCommand createTable = new SqliteCommand(tableCommand, db);
-
-                createTable.ExecuteReader();
+                createChannelsTable.ExecuteReader();
+                createEpisodesTable.ExecuteReader();
             }
         }
 
