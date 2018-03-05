@@ -15,6 +15,8 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
+using AccessLibrary;
+
 namespace Paragon_Podcast
 {
     /// <summary>
@@ -30,6 +32,8 @@ namespace Paragon_Podcast
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+
+            AccessLibrary.DbAccess.InitializeDatabase();
         }
 
         /// <summary>

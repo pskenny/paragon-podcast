@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AccessLibrary;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -27,6 +28,9 @@ namespace Paragon_Podcast
         {
             this.InitializeComponent();
             LoadAudio();
+#if DEBUG
+            DbAccess.AddSampleData();
+#endif
         }
 
         private void LoadAudio()
