@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AccessLibrary;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -29,13 +30,15 @@ namespace Paragon_Podcast
         {
             this.InitializeComponent();
             LoadAudio();
-
+#if DEBUG
+            DbAccess.AddSampleData();
+#endif
             try
             {
 
-                
 
-                //test data
+
+                //ui test data
                 Channel ch1 = new Channel();
                 Channel ch2 = new Channel();
                 Channel ch3 = new Channel();
@@ -67,13 +70,15 @@ namespace Paragon_Podcast
                 channelList.Add(ch9);
 
                 LVchannelList.ItemsSource = channelList;
-               // LVepisodeList.ItemsSource = channelList;//place holder
+                // LVepisodeList.ItemsSource = channelList;//place holder
 
             }
             catch (Exception e)
             {
                 //todo add exception handleing
             }
+
+
         }
 
         private void LoadAudio()
