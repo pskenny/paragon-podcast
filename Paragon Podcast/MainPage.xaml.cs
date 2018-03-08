@@ -29,7 +29,7 @@ namespace Paragon_Podcast
         public MainPage()
         {
             this.InitializeComponent();
-            LoadAudio();
+            LoadAudio("https://www.computerhope.com/jargon/m/example.mp3");
 #if DEBUG
             DbAccess.AddSampleData();
 #endif
@@ -81,11 +81,11 @@ namespace Paragon_Podcast
 
         }
 
-        private void LoadAudio()
+        private void LoadAudio(string path)
         {
             try
             {
-                Uri pathUri = new Uri("ms-appx:///Audio/songOfStorms.mp3");
+                Uri pathUri = new Uri(path);
                 player.Source = MediaSource.CreateFromUri(pathUri);
             }
             catch (Exception ex)
