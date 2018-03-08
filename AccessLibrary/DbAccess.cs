@@ -61,7 +61,7 @@ namespace AccessLibrary
                 SqliteCommand createEpisodesTable = new SqliteCommand(SQL_CREATE_EPISODES_TABLE, db);
 
                 createChannelsTable.ExecuteReader();
-                createEpisodesTable.ExecuteReader();
+                //createEpisodesTable.ExecuteReader();
             }
         }
 
