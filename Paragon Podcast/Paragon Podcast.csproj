@@ -101,7 +101,6 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="XMLHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -141,8 +140,8 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.0.6</Version>
     </PackageReference>
-    <PackageReference Include="SQLitePCLRaw.bundle_winsqlite3">
-      <Version>1.1.9</Version>
+    <PackageReference Include="sqlite-net-base">
+      <Version>1.5.166-beta</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
