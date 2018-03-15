@@ -31,7 +31,9 @@ namespace Paragon_Podcast
             this.InitializeComponent();
             LoadAudio("https://www.computerhope.com/jargon/m/example.mp3");
 #if DEBUG
-            DbAccess.AddSampleData();
+            ObservableCollection<Channel> list = new ObservableCollection<Channel>();
+            list.Add(XmlHandler.LoadSampleData());
+            // TODO Bind to GUI
 #endif
             try
             {
