@@ -51,15 +51,15 @@ namespace Paragon_Podcast
                 Channel ch8 = new Channel();
                 Channel ch9 = new Channel();
 
-                ch1.title = "title1";
-                ch2.title = "title2";
-                ch3.title = "title3";
-                ch4.title = "title4";
-                ch5.title = "title5";
-                ch6.title = "title6";
-                ch7.title = "title7";
-                ch8.title = "title8";
-                ch9.title = "title9";
+                ch1.Title = "title1";
+                ch2.Title = "title2";
+                ch3.Title = "title3";
+                ch4.Title = "title4";
+                ch5.Title = "title5";
+                ch6.Title = "title6";
+                ch7.Title = "title7";
+                ch8.Title = "title8";
+                ch9.Title = "title9";
 
                 channelList.Add(ch1);
                 channelList.Add(ch2);

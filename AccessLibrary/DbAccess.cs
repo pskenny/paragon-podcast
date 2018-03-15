@@ -79,23 +79,23 @@ namespace AccessLibrary
                 // add parameters
                 // TODO important, fix id (check db, +1)
                 //insertChannel.Parameters.Add(new SqliteParameter("@id", channel.id));
-                insertChannel.Parameters.Add(new SqliteParameter("@title", channel.title));
-                insertChannel.Parameters.Add(new SqliteParameter("@description", channel.description));
-                insertChannel.Parameters.Add(new SqliteParameter("@link", channel.link));
-                insertChannel.Parameters.Add(new SqliteParameter("@language", channel.language));
-                insertChannel.Parameters.Add(new SqliteParameter("@copyright", channel.copyright));
-                insertChannel.Parameters.Add(new SqliteParameter("@lastbuilddate", channel.lastBuildDate));
-                insertChannel.Parameters.Add(new SqliteParameter("@pubdate", channel.pubDate));
-                insertChannel.Parameters.Add(new SqliteParameter("@docs", channel.docs));
-                insertChannel.Parameters.Add(new SqliteParameter("@webmaster", channel.webMaster));
-                insertChannel.Parameters.Add(new SqliteParameter("@itunes_author", channel.itunesAuthor));
-                insertChannel.Parameters.Add(new SqliteParameter("@itunes_subtitle", channel.itunesSubtitle));
-                insertChannel.Parameters.Add(new SqliteParameter("@itunes_summary", channel.itunesSummary));
-                insertChannel.Parameters.Add(new SqliteParameter("@itunes_owner_name", channel.itunesOwner_name));
-                insertChannel.Parameters.Add(new SqliteParameter("@itunes_owner_email", channel.itunesOwner_email));
-                insertChannel.Parameters.Add(new SqliteParameter("@itunes_explicit", channel.itunesExplicit));
+                insertChannel.Parameters.Add(new SqliteParameter("@title", channel.Title));
+                insertChannel.Parameters.Add(new SqliteParameter("@description", channel.Description));
+                insertChannel.Parameters.Add(new SqliteParameter("@link", channel.Link));
+                insertChannel.Parameters.Add(new SqliteParameter("@language", channel.Language));
+                insertChannel.Parameters.Add(new SqliteParameter("@copyright", channel.Copyright));
+                insertChannel.Parameters.Add(new SqliteParameter("@lastbuilddate", channel.LastBuildDate));
+                insertChannel.Parameters.Add(new SqliteParameter("@pubdate", channel.PubDate));
+                insertChannel.Parameters.Add(new SqliteParameter("@docs", channel.Docs));
+                insertChannel.Parameters.Add(new SqliteParameter("@webmaster", channel.Webmaster));
+                insertChannel.Parameters.Add(new SqliteParameter("@itunes_author", channel.ItunesAuthor));
+                insertChannel.Parameters.Add(new SqliteParameter("@itunes_subtitle", channel.ItunesSubtitle));
+                insertChannel.Parameters.Add(new SqliteParameter("@itunes_summary", channel.ItunesSummary));
+                insertChannel.Parameters.Add(new SqliteParameter("@itunes_owner_name", channel.ItunesOwnerName));
+                insertChannel.Parameters.Add(new SqliteParameter("@itunes_owner_email", channel.ItunesOwnerEmail));
+                insertChannel.Parameters.Add(new SqliteParameter("@itunes_explicit", channel.ItunesExplicit));
                 //insertChannel.Parameters.Add(new SqliteParameter("@itunes_image", channel.itunesImage));
-                insertChannel.Parameters.Add(new SqliteParameter("@itunes_category", channel.itunesCategory));
+                insertChannel.Parameters.Add(new SqliteParameter("@itunes_category", channel.ItunesCategory));
 
                 insertChannel.ExecuteReader();
 
@@ -178,7 +178,7 @@ namespace AccessLibrary
 
                     // Add channel to list
 
-                    SqliteCommand selectEpisodesCommand = new SqliteCommand("select * from episodes where id = " + channel.id, db);
+                    SqliteCommand selectEpisodesCommand = new SqliteCommand("select * from episodes where id = " + channel.Id, db);
                     SqliteDataReader episodesQuery = selectEpisodesCommand.ExecuteReader();
 
                     while (episodesQuery.Read())

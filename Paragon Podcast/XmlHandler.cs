@@ -34,35 +34,35 @@ namespace Paragon_Podcast
             XmlNode channelNode = xmlDoc.SelectSingleNode("rss/channel");
             XmlNode channelSubNode = channelNode.SelectSingleNode("title");
             string channelTitle = channelSubNode != null ? channelSubNode.InnerText : "";
-            channel.title = channelTitle;
+            channel.Title = channelTitle;
 
             channelSubNode = channelNode.SelectSingleNode("description");
             string channelDescription = channelSubNode != null ? channelSubNode.InnerText : "";
-            channel.description = channelDescription;
+            channel.Description = channelDescription;
 
             channelSubNode = channelNode.SelectSingleNode("language");
             string channelLanguage = channelSubNode != null ? channelSubNode.InnerText : "";
-            channel.language = channelLanguage;
+            channel.Language = channelLanguage;
 
             channelSubNode = channelNode.SelectSingleNode("copyright");
             string channelCopyright = channelSubNode != null ? channelSubNode.InnerText : "";
-            channel.copyright = channelCopyright;
+            channel.Copyright = channelCopyright;
 
             channelSubNode = channelNode.SelectSingleNode("lastBuildDate");
             string channelLastBuildDate = channelSubNode != null ? channelSubNode.InnerText : "";
-            channel.lastBuildDate = DateTime.Parse(channelLastBuildDate);
+            channel.LastBuildDate = DateTime.Parse(channelLastBuildDate);
 
             channelSubNode = channelNode.SelectSingleNode("pubDate");
             string channelPubDate = channelSubNode != null ? channelSubNode.InnerText : "";
-            channel.pubDate = DateTime.Parse(channelPubDate);
+            channel.PubDate = DateTime.Parse(channelPubDate);
 
             channelSubNode = channelNode.SelectSingleNode("docs");
             string channelDocs = channelSubNode != null ? channelSubNode.InnerText : "";
-            channel.docs = channelDocs;
+            channel.Docs = channelDocs;
 
             channelSubNode = channelNode.SelectSingleNode("webMaster");
             string channelWebMaster = channelSubNode != null ? channelSubNode.InnerText : "";
-            channel.webMaster = channelWebMaster;
+            channel.Webmaster = channelWebMaster;
 
             /* TODO fix, iTunes tags, uses namespaces
             channelSubNode = channelNode.SelectSingleNode("");
