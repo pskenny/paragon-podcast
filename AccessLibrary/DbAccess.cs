@@ -134,23 +134,23 @@ namespace AccessLibrary
                 // add parameters
                 // TODO important, fix id (check db, +1)
                 //insertChannel.Parameters.Add(new SqliteParameter("@id", id));
-                insertEpisode.Parameters.Add(new SqliteParameter("@channel_id", episode.channelId));
-                insertEpisode.Parameters.Add(new SqliteParameter("@title", episode.title));
-                insertEpisode.Parameters.Add(new SqliteParameter("@link", episode.link));
-                insertEpisode.Parameters.Add(new SqliteParameter("@guid", episode.guid));
-                insertEpisode.Parameters.Add(new SqliteParameter("@description", episode.description));
-                insertEpisode.Parameters.Add(new SqliteParameter("@enclosure_url", episode.enclosureUrl));
-                insertEpisode.Parameters.Add(new SqliteParameter("@enclosure_length", episode.enclosureLength));
-                insertEpisode.Parameters.Add(new SqliteParameter("@enclosure_type", episode.enclosureType));
-                insertEpisode.Parameters.Add(new SqliteParameter("@category", episode.category));
-                insertEpisode.Parameters.Add(new SqliteParameter("@pubdate", episode.pubDate));
-                insertEpisode.Parameters.Add(new SqliteParameter("@itunes_author", episode.itunesAuthor));
-                insertEpisode.Parameters.Add(new SqliteParameter("@itunes_explicit", episode.itunesExplicit));
-                insertEpisode.Parameters.Add(new SqliteParameter("@itunes_subtitle", episode.itunesSubtitle));
-                insertEpisode.Parameters.Add(new SqliteParameter("@itunes_summary", episode.itunesSummary));
-                insertEpisode.Parameters.Add(new SqliteParameter("@itunes_duration", episode.itunesDuration));
-                insertEpisode.Parameters.Add(new SqliteParameter("@keywords", episode.keywords));
-                insertEpisode.Parameters.Add(new SqliteParameter("@file_location", episode.fileLocation));
+                insertEpisode.Parameters.Add(new SqliteParameter("@channel_id", episode.ChannelId));
+                insertEpisode.Parameters.Add(new SqliteParameter("@title", episode.Title));
+                insertEpisode.Parameters.Add(new SqliteParameter("@link", episode.Link));
+                insertEpisode.Parameters.Add(new SqliteParameter("@guid", episode.Guid));
+                insertEpisode.Parameters.Add(new SqliteParameter("@description", episode.Description));
+                insertEpisode.Parameters.Add(new SqliteParameter("@enclosure_url", episode.EnclosureUrl));
+                insertEpisode.Parameters.Add(new SqliteParameter("@enclosure_length", episode.EnclosureLength));
+                insertEpisode.Parameters.Add(new SqliteParameter("@enclosure_type", episode.EnclosureType));
+                insertEpisode.Parameters.Add(new SqliteParameter("@category", episode.Category));
+                insertEpisode.Parameters.Add(new SqliteParameter("@pubdate", episode.PubDate));
+                insertEpisode.Parameters.Add(new SqliteParameter("@itunes_author", episode.ItunesAuthor));
+                insertEpisode.Parameters.Add(new SqliteParameter("@itunes_explicit", episode.ItunesExplicit));
+                insertEpisode.Parameters.Add(new SqliteParameter("@itunes_subtitle", episode.ItunesSubtitle));
+                insertEpisode.Parameters.Add(new SqliteParameter("@itunes_summary", episode.ItunesSummary));
+                insertEpisode.Parameters.Add(new SqliteParameter("@itunes_duration", episode.ItunesDuration));
+                insertEpisode.Parameters.Add(new SqliteParameter("@keywords", episode.Keywords));
+                insertEpisode.Parameters.Add(new SqliteParameter("@file_location", episode.FileLocation));
 
                 insertEpisode.ExecuteReader();
 

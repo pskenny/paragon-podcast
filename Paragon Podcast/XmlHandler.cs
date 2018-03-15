@@ -106,19 +106,19 @@ namespace Paragon_Podcast
 
                 XmlNode rssSubNode = rssNode.SelectSingleNode("title");
                 string title = rssSubNode != null ? rssSubNode.InnerText : "";
-                episode.title = title;
+                episode.Title = title;
 
                 rssSubNode = rssNode.SelectSingleNode("link");
                 string link = rssSubNode != null ? rssSubNode.InnerText : "";
-                episode.link = link;
+                episode.Link = link;
 
                 rssSubNode = rssNode.SelectSingleNode("guid");
                 string guid = rssSubNode != null ? rssSubNode.InnerText : "";
-                episode.guid = guid;
+                episode.Guid = guid;
 
                 rssSubNode = rssNode.SelectSingleNode("description");
                 string description = rssSubNode != null ? rssSubNode.InnerText : "";
-                episode.description = description;
+                episode.Description = description;
 
                 /* TODO fix, these are attributes
                  rssSubNode = rssNode.SelectSingleNode("enclosureUrl");
@@ -136,11 +136,11 @@ namespace Paragon_Podcast
 
                 rssSubNode = rssNode.SelectSingleNode("category");
                 string category = rssSubNode != null ? rssSubNode.InnerText : "";
-                episode.category = category;
+                episode.Category = category;
 
                 rssSubNode = rssNode.SelectSingleNode("pubDate");
                 string pubDate = rssSubNode != null ? rssSubNode.InnerText : "";
-                episode.pubDate = DateTime.Parse(pubDate);
+                episode.PubDate = DateTime.Parse(pubDate);
 
                 /* TODO fix, these use a namespace
                 rssSubNode = rssNode.SelectSingleNode("itunesAuthor");
@@ -166,7 +166,7 @@ namespace Paragon_Podcast
 
                 rssSubNode = rssNode.SelectSingleNode("keywords");
                 string keywords = rssSubNode != null ? rssSubNode.InnerText : "";
-                episode.keywords = keywords;
+                episode.Keywords = keywords;
 
                 channel.EpisodeList.Add(episode);
             }
