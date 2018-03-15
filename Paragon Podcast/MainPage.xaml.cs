@@ -32,7 +32,7 @@ namespace Paragon_Podcast
             LoadAudio("https://www.computerhope.com/jargon/m/example.mp3");
 #if DEBUG
             ObservableCollection<Channel> list = new ObservableCollection<Channel>();
-            list.Add(XmlHandler.LoadSampleData());
+            // list.Add(XmlHandler.LoadSampleData());
             // TODO Bind to GUI
 #endif
             try
