@@ -95,12 +95,11 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Channel.cs" />
-    <Compile Include="Episode.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XmlHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -109,6 +108,7 @@
     <None Include="Paragon Podcast_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\sample.xml" />
     <Content Include="Audio\songOfStorms.mp3" />
     <Content Include="Assets\Logo.png" />
     <Content Include="Properties\Default.rd.xml" />
