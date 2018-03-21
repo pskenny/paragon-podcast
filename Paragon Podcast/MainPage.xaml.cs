@@ -38,8 +38,6 @@ namespace Paragon_Podcast
             try
             {
 
-                
-
                 //ui test data
                 Channel ch1 = new Channel();
                 Channel ch2 = new Channel();
@@ -48,19 +46,22 @@ namespace Paragon_Podcast
 
                 ch1.Title = "Channel 1";
                 ch2.Title = "Channel 2";
+                ch1.EpisodeList = new List<Episode>();
+                ch2.EpisodeList = new List<Episode>();
                 e1.Title  = "episode 1";
                 e2.Title  = "episode 2";
                 e1.EnclosureUrl = "";
                 e2.EnclosureUrl = "https://www.computerhope.com/jargon/m/example.mp3";
 
-
-                channelList.Add(ch1);
-                channelList.Add(ch2);
-
                 ch1.EpisodeList.Add(e1);
                 ch1.EpisodeList.Add(e2);
                 ch2.EpisodeList.Add(e1);
                 ch2.EpisodeList.Add(e2);
+
+                channelList.Add(ch1);
+                channelList.Add(ch2);
+
+                
 
 
 
