@@ -7,52 +7,47 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="#FF666666">
-
+    <Grid Background="#FF666666" Width="1280" Height="720">
+        
+        <!--Meida player-->
         <MediaPlayerElement 
             x:Name="player"
             AutoPlay="False"
             AreTransportControlsEnabled="True" 
-            Margin="470,3,42,-1" Background="#FF323232">
-
+            Background="#FF323232">
             <MediaPlayerElement.TransportControls>
-                <MediaTransportControls 
-                    IsCompact = "True"
-                    IsFullWindowButtonVisible = "False"
-                    IsZoomButtonVisible = "False" Margin="0,921,0,30" Background="#FF632A2A"/>
+                <MediaTransportControls IsCompact = "True" IsFullWindowButtonVisible = "False" IsZoomButtonVisible = "False"  Background="#FF632A2A"/>
             </MediaPlayerElement.TransportControls>
-
         </MediaPlayerElement>
-        <StackPanel HorizontalAlignment="Left" Height="750" Margin="25,220,0,0" VerticalAlignment="Top" Width="386" Background="#FCC3C3C3">
-
+        
+        <!--chanel list pannel-->
+        <StackPanel HorizontalAlignment="Left"  VerticalAlignment="Top"  Background="#FCC3C3C3"> 
             <ListView x:Name="LVchannelList" IsItemClickEnabled="True" ItemClick="LVchannelList_ItemClick">
-            <ListView.ItemTemplate>
-
-                <DataTemplate>
-                        <Grid>
-                        <TextBlock Text="{Binding title}"></TextBlock>
-                        </Grid>
-                    </DataTemplate>
-
-            </ListView.ItemTemplate>
-            </ListView>
-        </StackPanel>
-        <StackPanel HorizontalAlignment="Left" Height="680" Margin="470,220,0,0" VerticalAlignment="Top" Width="990" Background="#FFC3C3C3">
-
-            <ListView x:Name="LVepisodeList" IsItemClickEnabled="True">
                 <ListView.ItemTemplate>
-
                     <DataTemplate>
                         <Grid>
                             <TextBlock Text="{Binding title}"></TextBlock>
                         </Grid>
                     </DataTemplate>
-
                 </ListView.ItemTemplate>
             </ListView>
-
         </StackPanel>
-        <StackPanel HorizontalAlignment="Left" Height="144" Margin="-20,40,0,0" VerticalAlignment="Top" Width="1022">
+        
+        <!--episode list pannel-->
+        <StackPanel HorizontalAlignment="Left"  VerticalAlignment="Top" Background="#FFC3C3C3">
+            <ListView x:Name="LVepisodeList" IsItemClickEnabled="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <TextBlock Text="{Binding title}"></TextBlock>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+        
+        <!--Logo pannel-->
+        <StackPanel HorizontalAlignment="Left" Height="144" VerticalAlignment="Top" Width="1022">
             <StackPanel.Background>
                 <ImageBrush ImageSource="Assets/Logo.png"/>
             </StackPanel.Background>

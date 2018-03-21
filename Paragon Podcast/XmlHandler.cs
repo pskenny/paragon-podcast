@@ -22,7 +22,7 @@ namespace Paragon_Podcast
         {
             XmlDocument sampleXmlDoc = new XmlDocument();
             // TODO set to sample.xml
-            sampleXmlDoc.Load("http://where");
+            sampleXmlDoc.Load("https://www.buzzsprout.com/163012.rss");
             return GetChannel(sampleXmlDoc);
         }
 
