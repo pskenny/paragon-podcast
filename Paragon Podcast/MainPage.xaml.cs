@@ -71,6 +71,8 @@ namespace Paragon_Podcast
                 channelList.Add(ch8);
                 channelList.Add(ch9);
 
+                
+
                 LVchannelList.ItemsSource = channelList;
                 // LVepisodeList.ItemsSource = channelList;//place holder
 
@@ -101,6 +103,12 @@ namespace Paragon_Podcast
             Channel temp = (Channel)sender;
             LVepisodeList.ItemsSource = temp.EpisodeList;
 
+        }
+
+        private void LVepisodeList_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Episode temp = (Episode)sender;
+            LoadAudio(temp.EnclosureUrl);
         }
     }
 }
