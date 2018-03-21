@@ -9,6 +9,7 @@ namespace AccessLibrary
 {
     public class Episode : INotifyPropertyChanged
     {
+        public int Id { get; set; }
         public int ChannelId { get; set; }
         public String Title { get; set; }           //title information
         public String Link { get; set; }            //URL to main podcast website
