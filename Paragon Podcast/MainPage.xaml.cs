@@ -92,7 +92,7 @@ namespace Paragon_Podcast
 
         private void LVchannelList_ItemClick(object sender, ItemClickEventArgs e)
         {
-            Channel temp = (Channel)sender;
+            Channel temp = (Channel)e.ClickedItem;
             LVepisodeList.ItemsSource = temp.EpisodeList;
 
         }

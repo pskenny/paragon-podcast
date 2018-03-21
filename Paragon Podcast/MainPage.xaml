@@ -50,7 +50,7 @@
         
         <!--episode list pannel-->
         <Grid x:Name="SecondGrid" Grid.Column="1" Grid.Row="1" Background="#FFC3C3C3">
-            <ListView x:Name="LVepisodeList" IsItemClickEnabled="True">
+            <ListView x:Name="LVepisodeList" IsItemClickEnabled="True" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
