@@ -161,35 +161,77 @@ namespace AccessLibrary
         public static ObservableCollection<Channel> GetChannels()
         {
             ObservableCollection<Channel> channelList = new ObservableCollection<Channel>();
-            
 
             using (SqliteConnection db = new SqliteConnection("Filename=paragonpodcast.db"))
             {
                 db.Open();
 
                 SqliteCommand selectChannelsCommand = new SqliteCommand("select * from channels", db);
-                SqliteDataReader channelsQuery = selectChannelsCommand.ExecuteReader();
+                SqliteDataReader channelsReader = selectChannelsCommand.ExecuteReader();
 
-                while (channelsQuery.Read())
+                while (channelsReader.Read())
                 {
-                    // Add new channel
                     Channel channel = new Channel();
-                    // Populate channel
+
+                    // Populate channel information
+                    channel.Id = (int)channelsReader["id"];
+                    channel.Title = channelsReader["title"].ToString();
+                    channel.Description = channelsReader["description"].ToString();
+                    channel.Link = channelsReader["link"].ToString();
+                    channel.Language = channelsReader["language"].ToString();
+                    channel.Copyright = channelsReader["copyright"].ToString();
+                    channel.LastBuildDate = DateTime.Parse(channelsReader["lastbuilddate"].ToString());
+                    channel.PubDate = DateTime.Parse(channelsReader["pubdate"].ToString());
+                    channel.Docs = channelsReader["docs"].ToString();
+                    channel.Webmaster = channelsReader["webmaster"].ToString();
+                    channel.ItunesAuthor = channelsReader["itunes_author"].ToString();
+                    channel.ItunesSubtitle = channelsReader["itunes_subtitle"].ToString();
+                    channel.ItunesSummary = channelsReader["itunes_summary"].ToString();
+                    channel.ItunesOwnerName = channelsReader["itunes_owner_name"].ToString();
+                    channel.ItunesOwnerEmail = channelsReader["itunes_owner_email"].ToString();
+                    channel.ItunesExplicit = channelsReader["itunes_explicit"].ToString();
+                    //channel.ItunesImage = channelsReader["itunes_image"].ToString();
+                    channel.ItunesCategory = channelsReader["itunes_category"].ToString();
 
                     // Add channel to list
-
                     SqliteCommand selectEpisodesCommand = new SqliteCommand("select * from episodes where id = " + channel.Id, db);
-                    SqliteDataReader episodesQuery = selectEpisodesCommand.ExecuteReader();
 
-                    while (episodesQuery.Read())
+                    using (SqliteDataReader episodesReader = selectEpisodesCommand.ExecuteReader())
                     {
-                        // Add episode to channel
+                        while (episodesReader.Read())
+                        {
+                            Episode episode = new Episode();
+
+                            // Populate episode information
+                            episode.Id = (int)episodesReader["id"];
+                            episode.ChannelId = (int)episodesReader["channel_id"];
+                            episode.Title = episodesReader["title"].ToString();
+                            episode.Link = episodesReader["link"].ToString();
+                            episode.Guid = episodesReader["guid"].ToString();
+                            episode.Description = episodesReader["description"].ToString();
+                            episode.EnclosureUrl = episodesReader["enclosure_url"].ToString();
+                            episode.EnclosureLength = (int)episodesReader["enclosure_length"];
+                            episode.EnclosureType = episodesReader["enclosure_type"].ToString();
+                            episode.Category = episodesReader["category"].ToString();
+                            episode.PubDate = DateTime.Parse(episodesReader["pubdate"].ToString());
+                            episode.ItunesAuthor = episodesReader["itunes_author"].ToString();
+                            episode.ItunesExplicit = episodesReader["itunes_explicit"].ToString();
+                            episode.ItunesSubtitle = episodesReader["itunes_subtitle"].ToString();
+                            episode.ItunesSummary = episodesReader["itunes_summary"].ToString();
+                            episode.ItunesDuration = episodesReader["itunes_duration"].ToString();
+                            episode.Keywords = episodesReader["keywords"].ToString();
+                            episode.FileLocation = episodesReader["file_location"].ToString();
+
+                            // Add episode associated with channel
+                            channel.EpisodeList.Add(episode);
+                        }
                     }
+                    // Add channel to channel list
+                    channelList.Add(channel);
                 }
                 db.Close();
             }
             return channelList;
         }
     }
-
 }
