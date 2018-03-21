@@ -50,7 +50,7 @@ namespace Paragon_Podcast
                 ch2.EpisodeList = new List<Episode>();
                 e1.Title  = "episode 1";
                 e2.Title  = "episode 2";
-                e1.EnclosureUrl = "";
+                e1.EnclosureUrl = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3";
                 e2.EnclosureUrl = "https://www.computerhope.com/jargon/m/example.mp3";
 
                 ch1.EpisodeList.Add(e1);
@@ -99,7 +99,7 @@ namespace Paragon_Podcast
 
         private void LVepisodeList_ItemClick(object sender, ItemClickEventArgs e)
         {
-            Episode temp = (Episode)sender;
+            Episode temp = (Episode)e.ClickedItem;
             LoadAudio(temp.EnclosureUrl);
         }
     }
