@@ -43,35 +43,26 @@ namespace Paragon_Podcast
                 //ui test data
                 Channel ch1 = new Channel();
                 Channel ch2 = new Channel();
-                Channel ch3 = new Channel();
-                Channel ch4 = new Channel();
-                Channel ch5 = new Channel();
-                Channel ch6 = new Channel();
-                Channel ch7 = new Channel();
-                Channel ch8 = new Channel();
-                Channel ch9 = new Channel();
+                Episode e1 = new Episode();
+                Episode e2 = new Episode();
 
-                ch1.Title = "title1";
-                ch2.Title = "title2";
-                ch3.Title = "title3";
-                ch4.Title = "title4";
-                ch5.Title = "title5";
-                ch6.Title = "title6";
-                ch7.Title = "title7";
-                ch8.Title = "title8";
-                ch9.Title = "title9";
+                ch1.Title = "Channel 1";
+                ch2.Title = "Channel 2";
+                e1.Title  = "episode 1";
+                e2.Title  = "episode 2";
+                e1.EnclosureUrl = "";
+                e2.EnclosureUrl = "https://www.computerhope.com/jargon/m/example.mp3";
+
 
                 channelList.Add(ch1);
                 channelList.Add(ch2);
-                channelList.Add(ch3);
-                channelList.Add(ch4);
-                channelList.Add(ch5);
-                channelList.Add(ch6);
-                channelList.Add(ch7);
-                channelList.Add(ch8);
-                channelList.Add(ch9);
 
-                
+                ch1.EpisodeList.Add(e1);
+                ch1.EpisodeList.Add(e2);
+                ch2.EpisodeList.Add(e1);
+                ch2.EpisodeList.Add(e2);
+
+
 
                 LVchannelList.ItemsSource = channelList;
                 // LVepisodeList.ItemsSource = channelList;//place holder
