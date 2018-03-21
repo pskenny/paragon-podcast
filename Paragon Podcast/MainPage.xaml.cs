@@ -38,7 +38,7 @@ namespace Paragon_Podcast
             try
             {
 
-
+                
 
                 //ui test data
                 Channel ch1 = new Channel();
@@ -98,7 +98,9 @@ namespace Paragon_Podcast
 
         private void LVchannelList_ItemClick(object sender, ItemClickEventArgs e)
         {
-            LVepisodeList.ItemsSource = channelList;
+            Channel temp = (Channel)sender;
+            LVepisodeList.ItemsSource = temp.EpisodeList;
+
         }
     }
 }
