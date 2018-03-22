@@ -81,7 +81,9 @@ namespace Paragon_Podcast
         {
             try
             {
+                //creates new uri from episode path
                 Uri pathUri = new Uri(path);
+                //sets players mediasource to the specified path
                 player.Source = MediaSource.CreateFromUri(pathUri);
             }
             catch (Exception ex)
@@ -92,6 +94,7 @@ namespace Paragon_Podcast
 
         private void LVchannelList_ItemClick(object sender, ItemClickEventArgs e)
         {
+            //when channel is clicked from channel list view load the episode list for the channel to the episode list view
             Channel temp = (Channel)e.ClickedItem;
             LVepisodeList.ItemsSource = temp.EpisodeList;
 
@@ -99,8 +102,11 @@ namespace Paragon_Podcast
 
         private void LVepisodeList_ItemClick(object sender, ItemClickEventArgs e)
         {
+            //when an episode is clicked in the episode list view load the audio from the episodes enclosure Url
             Episode temp = (Episode)e.ClickedItem;
             LoadAudio(temp.EnclosureUrl);
         }
+
+        //todo playback speed buttons -uamhan
     }
 }
