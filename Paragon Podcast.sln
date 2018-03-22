@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
+# Blend for Visual Studio 15
 VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paragon Podcast", "Paragon Podcast\Paragon Podcast.csproj", "{61BB91C0-29A6-45C9-984B-D6B943A8BD56}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccessLibrary", "AccessLibrary\AccessLibrary.csproj", "{091F9738-9424-4698-95BF-0C114D240559}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccessLibrary", "AccessLibrary\AccessLibrary.csproj", "{091F9738-9424-4698-95BF-0C114D240559}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

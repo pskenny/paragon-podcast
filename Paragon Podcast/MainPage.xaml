@@ -7,7 +7,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="#FF666666" x:Name="mainGrid">
+    <Grid x:Name="mainGrid" BorderBrush="Black">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF444444" Offset="0.565"/>
+                <GradientStop Color="#FF939393" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <!--grid definitions-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="50"/>
@@ -25,24 +31,30 @@
             <RowDefinition Height="25"/>
 
         </Grid.RowDefinitions>
-        
-        
+
+
         <!--Meida player-->
         <Grid x:Name="mediagrid" Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="3"  Background="#FCC3C3C3">
             <MediaPlayerElement 
             x:Name="player"
             AutoPlay="False"
             AreTransportControlsEnabled="True" 
-            Background="#FF323232">
+            Background="#FF131313" >
                 <MediaPlayerElement.TransportControls>
-                    <MediaTransportControls IsCompact = "True" IsFullWindowButtonVisible = "False" IsZoomButtonVisible = "False"  Background="#FF632A2A"/>
+                    <MediaTransportControls IsCompact = "True" IsFullWindowButtonVisible = "False" IsZoomButtonVisible = "False"/>
                 </MediaPlayerElement.TransportControls>
             </MediaPlayerElement>
         </Grid>
 
         <!--chanel list pannel-->
-        <Grid x:Name="FirstGrid" Grid.Column="1" Grid.Row="1" Grid.RowSpan="3" Background="#FCC3C3C3"> 
-            <ListView x:Name="LVchannelList" IsItemClickEnabled="True" ItemClick="LVchannelList_ItemClick">
+        <Grid x:Name="FirstGrid" Grid.Column="1" Grid.Row="1" Grid.RowSpan="3" Background="#FF474747">
+            <ListView x:Name="LVchannelList" IsItemClickEnabled="True" ItemClick="LVchannelList_ItemClick" FontFamily="Source Code Pro Black" FontSize="12" FontWeight="Bold" Margin="0,0,5,0">
+                <ListView.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF5F5F5F" Offset="0.213"/>
+                        <GradientStop Color="#FFA2A2A2" Offset="1"/>
+                    </LinearGradientBrush>
+                </ListView.Background>
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
@@ -52,10 +64,16 @@
                 </ListView.ItemTemplate>
             </ListView>
         </Grid>
-        
+
         <!--episode list pannel-->
-        <Grid x:Name="SecondGrid" Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="1" Background="#FFC3C3C3">
-            <ListView x:Name="LVepisodeList" IsItemClickEnabled="True" ItemClick="LVepisodeList_ItemClick">
+        <Grid x:Name="SecondGrid" Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="1" Background="#FF474747">
+            <ListView x:Name="LVepisodeList" IsItemClickEnabled="True" ItemClick="LVepisodeList_ItemClick" FontFamily="Source Sans Pro Black" FontSize="12" FontWeight="Bold" Margin="0,0,5,0">
+                <ListView.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF5F5F5F" Offset="0.213"/>
+                        <GradientStop Color="#FFA2A2A2" Offset="1"/>
+                    </LinearGradientBrush>
+                </ListView.Background>
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
@@ -65,7 +83,7 @@
                 </ListView.ItemTemplate>
             </ListView>
         </Grid>
-        
+
         <!--Logo pannel-->
         <Grid x:Name="thirdGrid" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="0">
             <Grid.Background>

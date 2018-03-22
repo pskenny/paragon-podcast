@@ -48,8 +48,8 @@ namespace Paragon_Podcast
                 ch2.Title = "Channel 2";
                 ch1.EpisodeList = new List<Episode>();
                 ch2.EpisodeList = new List<Episode>();
-                e1.Title  = "episode 1";
-                e2.Title  = "episode 2";
+                e1.Title  = "Episode 1";
+                e2.Title  = "Episode 2";
                 e1.EnclosureUrl = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3";
                 e2.EnclosureUrl = "https://www.computerhope.com/jargon/m/example.mp3";
 
