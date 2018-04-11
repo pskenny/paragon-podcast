@@ -81,10 +81,12 @@ namespace Paragon_Podcast
         {
             try
             {
+                
                 //creates new uri from episode path
                 Uri pathUri = new Uri(path);
                 //sets players mediasource to the specified path
                 player.Source = MediaSource.CreateFromUri(pathUri);
+                
             }
             catch (Exception ex)
             {
@@ -107,6 +109,22 @@ namespace Paragon_Podcast
             LoadAudio(temp.EnclosureUrl);
         }
 
-        //todo playback speed buttons -uamhan
+        //buttons that change the media player playback speed
+        private void PlaybackRate1_Click(object sender, RoutedEventArgs e)
+        {
+            player.MediaPlayer.PlaybackSession.PlaybackRate = 1;
+        }
+
+        private void PlaybackRate15_Click(object sender, RoutedEventArgs e)
+        {
+            player.MediaPlayer.PlaybackSession.PlaybackRate = 1.5;
+        }
+
+        private void PlaybackRate2_Click(object sender, RoutedEventArgs e)
+        {
+            player.MediaPlayer.PlaybackSession.PlaybackRate = 2;
+        }
+
+        
     }
 }

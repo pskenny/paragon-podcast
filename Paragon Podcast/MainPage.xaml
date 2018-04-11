@@ -26,7 +26,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height ="100"/>
             <RowDefinition/>
-            <RowDefinition Height="25"/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="25"/>
 
@@ -90,6 +90,10 @@
                 <ImageBrush ImageSource="Assets/Logo.png"/>
             </Grid.Background>
         </Grid>
+
+        <Button x:Name="PlaybackRate1" Grid.Column="3" Grid.Row="2" Content="1x" FontSize="16" Click="PlaybackRate1_Click" HorizontalAlignment="Left" />
+        <Button x:Name="PlaybackRate15" Grid.Column="3" Grid.Row="2" Content="1.5x" FontSize="16" Click="PlaybackRate15_Click" HorizontalAlignment="Center" />
+        <Button x:Name="PlaybackRate2" Grid.Column="3" Grid.Row="2" Content="2x" FontSize="16" Click="PlaybackRate2_Click" HorizontalAlignment="Right" />
 
 
     </Grid>
