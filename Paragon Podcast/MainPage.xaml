@@ -109,13 +109,23 @@
             <Button x:Name="PlaybackRate2" Grid.Column="2" Margin="2" Content="2x" FontSize="16" Click="PlaybackRate2_Click" HorizontalAlignment="Right" />
         </Grid>
 
-        <Button x:Name="addPodcast" Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" Padding="10" MinWidth="200" Content="+" FontSize="40" HorizontalAlignment="Center" Click="addPodcast_Click" >
+        <Button x:Name="addPodcast" Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" Padding="10" MinWidth="200" Content="+" FontSize="40" HorizontalAlignment="Center">
             <Button.Flyout>
                 <Flyout>
-                    <Grid>
-                    <TextBox x:Name="newChannelText" MinWidth="200"/>
-                    <Button x:Name="Confirm" Content="confirm"/>
-                    <Button x:Name="Cancel" Content="Cancel"/>
+                    <Grid x:Name="grdFlyout">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                    <TextBox x:Name="newChannelText" MinWidth="200" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0"/>
+                    <Button x:Name="Confirm" Content="confirm" Grid.Row="1" Grid.Column="0" Margin="2" Click="Confirm_Click"/>
+                    <Button x:Name="Cancel" Content="Cancel" Grid.Row="1" Grid.Column="1" Margin="2" Click="Cancel_Click"/>
                     </Grid>
                 </Flyout>
             </Button.Flyout>
