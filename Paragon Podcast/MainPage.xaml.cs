@@ -31,13 +31,10 @@ namespace Paragon_Podcast
             this.InitializeComponent();
             LoadAudio("https://www.computerhope.com/jargon/m/example.mp3");
 #if DEBUG
-            ObservableCollection<Channel> list = new ObservableCollection<Channel>();
-            // list.Add(XmlHandler.LoadSampleData());
-            // TODO Bind to GUI
+            channelList.Add(XmlHandler.LoadSampleData());
 #endif
             try
             {
-
                 //ui test data
                 Channel ch1 = new Channel();
                 Channel ch2 = new Channel();
@@ -61,10 +58,6 @@ namespace Paragon_Podcast
                 channelList.Add(ch1);
                 channelList.Add(ch2);
 
-                
-
-
-
                 LVchannelList.ItemsSource = channelList;
                 // LVepisodeList.ItemsSource = channelList;//place holder
 
@@ -73,8 +66,6 @@ namespace Paragon_Podcast
             {
                 //todo add exception handleing
             }
-
-
         }
 
         private void LoadAudio(string path)
