@@ -108,7 +108,18 @@
             <Button x:Name="PlaybackRate15" Grid.Column="1" Margin="2" Content="1.5x" FontSize="16" Click="PlaybackRate15_Click" HorizontalAlignment="Center" />
             <Button x:Name="PlaybackRate2" Grid.Column="2" Margin="2" Content="2x" FontSize="16" Click="PlaybackRate2_Click" HorizontalAlignment="Right" />
         </Grid>
-        <Button x:Name="addPodcast" Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" Padding="10" MinWidth="200" Content="+" FontSize="40" HorizontalAlignment="Center" Click="addPodcast_Click"/>
+
+        <Button x:Name="addPodcast" Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" Padding="10" MinWidth="200" Content="+" FontSize="40" HorizontalAlignment="Center" Click="addPodcast_Click" >
+            <Button.Flyout>
+                <Flyout>
+                    <Grid>
+                    <TextBox x:Name="newChannelText" MinWidth="200"/>
+                    <Button x:Name="Confirm" Content="confirm"/>
+                    <Button x:Name="Cancel" Content="Cancel"/>
+                    </Grid>
+                </Flyout>
+            </Button.Flyout>
+        </Button>
 
 
     </Grid>
