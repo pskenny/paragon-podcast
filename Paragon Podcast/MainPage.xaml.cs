@@ -129,9 +129,16 @@ namespace Paragon_Podcast
 
         private void Confirm_Click(object sender, RoutedEventArgs e)
         {
-
             string userInput = newChannelText.Text;
             newChannelText.Text = "";
+            try
+            {
+                channelList.Add(XmlHandler.GetChannel(userInput));
+            }
+            catch
+            {
+                
+            }
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
