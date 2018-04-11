@@ -119,19 +119,18 @@ namespace Paragon_Podcast
                 string description = rssSubNode != null ? rssSubNode.InnerText : "";
                 episode.Description = description;
 
-                /* TODO fix, these are attributes
-                 rssSubNode = rssNode.SelectSingleNode("enclosureUrl");
-                string enclosureUrl = rssSubNode != null ? rssSubNode.InnerText : "";
-                episode.enclosureUrl = enclosureUrl;
+                // TODO fix, these are attributes
+                rssSubNode = rssNode.SelectSingleNode("enclosure/@url");
+                string enclosureUrl = rssSubNode.Value != null ? rssSubNode.Value : "";
+                episode.EnclosureUrl = enclosureUrl;
 
-                rssSubNode = rssNode.SelectSingleNode("enclosureLength");
-                string enclosureLength = rssSubNode != null ? rssSubNode.InnerText : "";
-                episode.enclosureLength = enclosureLength;
+                rssSubNode = rssNode.SelectSingleNode("enclosure/@type");
+                string enclosureType = rssSubNode.Value != null ? rssSubNode.Value : "";
+                episode.EnclosureType = enclosureType;
 
-                rssSubNode = rssNode.SelectSingleNode("enclosureType");
-                string enclosureType = rssSubNode != null ? rssSubNode.InnerText : "";
-                episode.enclosureType = enclosureType;
-                */
+                rssSubNode = rssNode.SelectSingleNode("enclosure/@length");
+                string enclosureLength = rssSubNode.Value != null ? rssSubNode.Value : "0";
+                episode.EnclosureLength = Int32.Parse(enclosureLength);
 
                 rssSubNode = rssNode.SelectSingleNode("category");
                 string category = rssSubNode != null ? rssSubNode.InnerText : "";
