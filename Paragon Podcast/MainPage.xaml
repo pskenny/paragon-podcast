@@ -111,7 +111,7 @@
 
         <Button x:Name="addPodcast" Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" Padding="10" MinWidth="200" Content="+" FontSize="40" HorizontalAlignment="Center">
             <Button.Flyout>
-                <Flyout>
+                <Flyout x:Name="addFlyout">
                     <Grid x:Name="grdFlyout">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
