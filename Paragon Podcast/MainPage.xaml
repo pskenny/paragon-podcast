@@ -91,11 +91,24 @@
             </Grid.Background>
         </Grid>
 
-        <Button x:Name="PlaybackRate1" Grid.Column="3" Grid.Row="2" Content="1x" FontSize="16" Click="PlaybackRate1_Click" HorizontalAlignment="Left" />
-        <Button x:Name="PlaybackRate15" Grid.Column="3" Grid.Row="2" Content="1.5x" FontSize="16" Click="PlaybackRate15_Click" HorizontalAlignment="Center" />
-        <Button x:Name="PlaybackRate2" Grid.Column="3" Grid.Row="2" Content="2x" FontSize="16" Click="PlaybackRate2_Click" HorizontalAlignment="Right" />
+        <Grid x:Name="grdPlacyBackSpeed" Grid.Column="3" Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
 
-        <Button x:Name="addPodcast" Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" Padding="10" MinWidth="200" Content="+" FontSize="40" HorizontalAlignment="Center"/>
+            <Button x:Name="PlaybackRate1" Grid.Column="0" Margin="2" Content="1x" FontSize="16" Click="PlaybackRate1_Click" HorizontalAlignment="Left" />
+            <Button x:Name="PlaybackRate15" Grid.Column="1" Margin="2" Content="1.5x" FontSize="16" Click="PlaybackRate15_Click" HorizontalAlignment="Center" />
+            <Button x:Name="PlaybackRate2" Grid.Column="2" Margin="2" Content="2x" FontSize="16" Click="PlaybackRate2_Click" HorizontalAlignment="Right" />
+        </Grid>
+        <Button x:Name="addPodcast" Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" Padding="10" MinWidth="200" Content="+" FontSize="40" HorizontalAlignment="Center" Click="addPodcast_Click"/>
 
 
     </Grid>

@@ -127,6 +127,9 @@ namespace Paragon_Podcast
             player.MediaPlayer.PlaybackSession.PlaybackRate = 2;
         }
 
-        
+        private void addPodcast_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
