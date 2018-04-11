@@ -47,7 +47,7 @@
         </Grid>
 
         <!--chanel list pannel-->
-        <Grid x:Name="FirstGrid" Grid.Column="1" Grid.Row="1" Grid.RowSpan="3" Background="#FF474747">
+        <Grid x:Name="FirstGrid" Grid.Column="1" Grid.Row="1" Grid.RowSpan="1" Background="#FF474747">
             <ListView x:Name="LVchannelList" IsItemClickEnabled="True" ItemClick="LVchannelList_ItemClick" FontFamily="Source Code Pro Black" FontSize="12" FontWeight="Bold" Margin="0,0,5,0">
                 <ListView.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -94,6 +94,8 @@
         <Button x:Name="PlaybackRate1" Grid.Column="3" Grid.Row="2" Content="1x" FontSize="16" Click="PlaybackRate1_Click" HorizontalAlignment="Left" />
         <Button x:Name="PlaybackRate15" Grid.Column="3" Grid.Row="2" Content="1.5x" FontSize="16" Click="PlaybackRate15_Click" HorizontalAlignment="Center" />
         <Button x:Name="PlaybackRate2" Grid.Column="3" Grid.Row="2" Content="2x" FontSize="16" Click="PlaybackRate2_Click" HorizontalAlignment="Right" />
+
+        <Button x:Name="addPodcast" Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" Padding="10" MinWidth="200" Content="+" FontSize="40" HorizontalAlignment="Center"/>
 
 
     </Grid>

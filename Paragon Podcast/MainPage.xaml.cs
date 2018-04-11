@@ -94,6 +94,8 @@ namespace Paragon_Podcast
             }
         }
 
+        
+
         private void LVchannelList_ItemClick(object sender, ItemClickEventArgs e)
         {
             //when channel is clicked from channel list view load the episode list for the channel to the episode list view
