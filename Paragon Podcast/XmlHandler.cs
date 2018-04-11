@@ -21,8 +21,7 @@ namespace Paragon_Podcast
         public static Channel LoadSampleData()
         {
             XmlDocument sampleXmlDoc = new XmlDocument();
-            // TODO set to sample.xml
-            sampleXmlDoc.Load("https://www.buzzsprout.com/163012.rss");
+            sampleXmlDoc.Load("https://audioboom.com/channels/2399216.rss");
             return GetChannel(sampleXmlDoc);
         }
 
@@ -49,12 +48,12 @@ namespace Paragon_Podcast
             channel.Copyright = channelCopyright;
 
             channelSubNode = channelNode.SelectSingleNode("lastBuildDate");
-            string channelLastBuildDate = channelSubNode != null ? channelSubNode.InnerText : "";
-            channel.LastBuildDate = DateTime.Parse(channelLastBuildDate);
+            // TODO change from new datetime if null
+            channel.LastBuildDate = channelSubNode != null ? DateTime.Parse(channelSubNode.InnerText) : new DateTime();
 
             channelSubNode = channelNode.SelectSingleNode("pubDate");
-            string channelPubDate = channelSubNode != null ? channelSubNode.InnerText : "";
-            channel.PubDate = DateTime.Parse(channelPubDate);
+            // TODO change from new datetime if null
+            channel.PubDate = channelSubNode != null ? DateTime.Parse(channelSubNode.InnerText) : new DateTime();
 
             channelSubNode = channelNode.SelectSingleNode("docs");
             string channelDocs = channelSubNode != null ? channelSubNode.InnerText : "";
