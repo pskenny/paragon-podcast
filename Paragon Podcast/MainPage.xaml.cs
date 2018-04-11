@@ -31,11 +31,12 @@ namespace Paragon_Podcast
             this.InitializeComponent();
             LoadAudio("https://www.computerhope.com/jargon/m/example.mp3");
 #if DEBUG
-            channelList.Add(XmlHandler.LoadSampleData());
-#endif
             try
             {
-                //ui test data
+                // Load test podcast from URL
+                channelList.Add(XmlHandler.LoadSampleData());
+
+                // Load from local data
                 Channel ch1 = new Channel();
                 Channel ch2 = new Channel();
                 Episode e1 = new Episode();
@@ -57,15 +58,16 @@ namespace Paragon_Podcast
 
                 channelList.Add(ch1);
                 channelList.Add(ch2);
-
-                LVchannelList.ItemsSource = channelList;
-                // LVepisodeList.ItemsSource = channelList;//place holder
-
             }
             catch (Exception e)
             {
                 //todo add exception handleing
             }
+#else
+            // Load podcasts in DB
+#endif
+
+            LVchannelList.ItemsSource = channelList;
         }
 
         private void LoadAudio(string path)
