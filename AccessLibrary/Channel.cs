@@ -29,6 +29,11 @@ namespace AccessLibrary
         public String ItunesCategory { get; set; } //podcast category
         public List<Episode> EpisodeList { get; set; } //list of episodes for this channel
 
+        public Channel()
+        {
+            EpisodeList = new List<Episode>();
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
     }
 }
