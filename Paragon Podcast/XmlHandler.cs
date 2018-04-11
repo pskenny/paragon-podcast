@@ -21,8 +21,7 @@ namespace Paragon_Podcast
         public static Channel LoadSampleData()
         {
             XmlDocument sampleXmlDoc = new XmlDocument();
-            // TODO set to sample.xml
-            sampleXmlDoc.Load("https://www.buzzsprout.com/163012.rss");
+            sampleXmlDoc.Load("https://audioboom.com/channels/2399216.rss");
             return GetChannel(sampleXmlDoc);
         }
 
@@ -49,12 +48,12 @@ namespace Paragon_Podcast
             channel.Copyright = channelCopyright;
 
             channelSubNode = channelNode.SelectSingleNode("lastBuildDate");
-            string channelLastBuildDate = channelSubNode != null ? channelSubNode.InnerText : "";
-            channel.LastBuildDate = DateTime.Parse(channelLastBuildDate);
+            // TODO change from new datetime if null
+            channel.LastBuildDate = channelSubNode != null ? DateTime.Parse(channelSubNode.InnerText) : new DateTime();
 
             channelSubNode = channelNode.SelectSingleNode("pubDate");
-            string channelPubDate = channelSubNode != null ? channelSubNode.InnerText : "";
-            channel.PubDate = DateTime.Parse(channelPubDate);
+            // TODO change from new datetime if null
+            channel.PubDate = channelSubNode != null ? DateTime.Parse(channelSubNode.InnerText) : new DateTime();
 
             channelSubNode = channelNode.SelectSingleNode("docs");
             string channelDocs = channelSubNode != null ? channelSubNode.InnerText : "";
@@ -120,19 +119,18 @@ namespace Paragon_Podcast
                 string description = rssSubNode != null ? rssSubNode.InnerText : "";
                 episode.Description = description;
 
-                /* TODO fix, these are attributes
-                 rssSubNode = rssNode.SelectSingleNode("enclosureUrl");
-                string enclosureUrl = rssSubNode != null ? rssSubNode.InnerText : "";
-                episode.enclosureUrl = enclosureUrl;
+                // TODO fix, these are attributes
+                rssSubNode = rssNode.SelectSingleNode("enclosure/@url");
+                string enclosureUrl = rssSubNode.Value != null ? rssSubNode.Value : "";
+                episode.EnclosureUrl = enclosureUrl;
 
-                rssSubNode = rssNode.SelectSingleNode("enclosureLength");
-                string enclosureLength = rssSubNode != null ? rssSubNode.InnerText : "";
-                episode.enclosureLength = enclosureLength;
+                rssSubNode = rssNode.SelectSingleNode("enclosure/@type");
+                string enclosureType = rssSubNode.Value != null ? rssSubNode.Value : "";
+                episode.EnclosureType = enclosureType;
 
-                rssSubNode = rssNode.SelectSingleNode("enclosureType");
-                string enclosureType = rssSubNode != null ? rssSubNode.InnerText : "";
-                episode.enclosureType = enclosureType;
-                */
+                rssSubNode = rssNode.SelectSingleNode("enclosure/@length");
+                string enclosureLength = rssSubNode.Value != null ? rssSubNode.Value : "0";
+                episode.EnclosureLength = Int32.Parse(enclosureLength);
 
                 rssSubNode = rssNode.SelectSingleNode("category");
                 string category = rssSubNode != null ? rssSubNode.InnerText : "";

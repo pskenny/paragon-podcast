@@ -20,7 +20,7 @@ namespace AccessLibrary
         // Create channels table
         // Channel statements
         private static string SQL_CREATE_CHANNELS_TABLE = "create table if not exists channels " +
-            "(id int primary key not null, title text not null, description text, link text, " +
+            "(id integer primary key autoincrement, title text not null, description text, link text, " +
             "language text, copyright text, lastbuilddate text, pubdate text, docs text, " +
             "webmaster text, itunes_author text, itunes_subtitle text, itunes_summary text, " +
             "itunes_owner_name text, itunes_owner_email text, itunes_explicit text, itunes_image text, " +
@@ -38,7 +38,7 @@ namespace AccessLibrary
 
         // Episode statements
         // Create episodes table
-        private static string SQL_CREATE_EPISODES_TABLE = "create table if not exists episodes (id int primary key not null, " +
+        private static string SQL_CREATE_EPISODES_TABLE = "create table if not exists episodes (id integer primary key autoincrement, " +
             "int channel_id not null, title text, link text, guid text, description text, enclosure_url text, enclosure_length integer, " +
             "enclosure_type text, category text, pubdate text, itunes_author text, itunes_explicit text, " +
             "itunes_subtitle text, itunes_summary text, itunes_duration text, keywords text, file_location text);";
