@@ -131,13 +131,14 @@ namespace Paragon_Podcast
         {
             string userInput = newChannelText.Text;
             newChannelText.Text = "";
+
             try
             {
                 channelList.Add(XmlHandler.GetChannel(userInput));
             }
             catch
             {
-                
+                //error handleing code
             }
         }
 
