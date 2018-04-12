@@ -124,7 +124,7 @@
                         </Grid.RowDefinitions>
 
                     <TextBox x:Name="newChannelText" MinWidth="200" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0"/>
-                    <Button x:Name="Confirm" Content="confirm" Grid.Row="1" Grid.Column="0" Margin="2" Click="Confirm_Click"/>
+                    <Button x:Name="Confirm" Content="Confirm" Grid.Row="1" Grid.Column="0" Margin="2" Click="Confirm_Click"/>
                     <Button x:Name="Cancel" Content="Cancel" Grid.Row="1" Grid.Column="1" Margin="2" Click="Cancel_Click"/>
                     </Grid>
                 </Flyout>
