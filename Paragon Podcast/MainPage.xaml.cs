@@ -137,5 +137,15 @@ namespace Paragon_Podcast
         {
             addFlyout.Hide();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void deleteButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

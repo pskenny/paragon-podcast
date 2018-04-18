@@ -55,11 +55,29 @@
                         <GradientStop Color="#FFA2A2A2" Offset="1"/>
                     </LinearGradientBrush>
                 </ListView.Background>
+
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    </Style>
+                </ListView.ItemContainerStyle>
+
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
-                            <TextBlock Text="{Binding Title}"></TextBlock>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                
+                                
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Text="{Binding Title}" Grid.Column="0"  ></TextBlock>
+                            <Button x:Name="deleteButton" Content="Delete" Grid.Column="1" FontSize="8"  Click="deleteButton_Click" Tag="{Binding Title}" />
                         </Grid>
+                        
+                        
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
