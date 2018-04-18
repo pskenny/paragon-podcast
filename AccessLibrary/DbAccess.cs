@@ -17,6 +17,8 @@ namespace AccessLibrary
 {
     public class DbAccess
     {
+        // Connection string for DB
+        private const string CONNECTION_STRING = "Filename=paragonpodcast.db";
         // Create channels table
         // Channel statements
         private static string SQL_CREATE_CHANNELS_TABLE = "create table if not exists channels" +
@@ -48,7 +50,7 @@ namespace AccessLibrary
 
         public static void InitializeDatabase()
         {
-            using (SqliteConnection db = new SqliteConnection("Filename=paragonpodcast.db"))
+            using (SqliteConnection db = new SqliteConnection(CONNECTION_STRING))
             {
                 db.Open();
 
@@ -66,7 +68,7 @@ namespace AccessLibrary
         public static void AddChannel(Channel channel)
         {
             // Insert command
-            using (SqliteConnection db = new SqliteConnection("Filename=paragonpodcast.db"))
+            using (SqliteConnection db = new SqliteConnection(CONNECTION_STRING))
             {
                 db.Open();
 
@@ -91,7 +93,7 @@ namespace AccessLibrary
         public static void DeleteChannel(int id)
         {
             // Delete commands
-            using (SqliteConnection db = new SqliteConnection("Filename=paragonpodcast.db"))
+            using (SqliteConnection db = new SqliteConnection(CONNECTION_STRING))
             {
                 db.Open();
 
@@ -111,7 +113,7 @@ namespace AccessLibrary
         public static void AddEpisode(Episode episode)
         {
             // Insert command
-            using (SqliteConnection db = new SqliteConnection("Filename=paragonpodcast.db"))
+            using (SqliteConnection db = new SqliteConnection(CONNECTION_STRING))
             {
                 db.Open();
 
@@ -139,7 +141,7 @@ namespace AccessLibrary
         {
             ObservableCollection<Channel> channelList = new ObservableCollection<Channel>();
 
-            using (SqliteConnection db = new SqliteConnection("Filename=paragonpodcast.db"))
+            using (SqliteConnection db = new SqliteConnection(CONNECTION_STRING))
             {
                 db.Open();
 
