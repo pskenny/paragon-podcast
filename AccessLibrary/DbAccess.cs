@@ -90,26 +90,6 @@ namespace AccessLibrary
             }
         }
 
-        public static void DeleteChannel(int id)
-        {
-            // Delete commands
-            using (SqliteConnection db = new SqliteConnection(CONNECTION_STRING))
-            {
-                db.Open();
-
-                SqliteCommand deleteChannel = new SqliteCommand(SQL_DELETE_CHANNEL, db);
-                SqliteCommand deleteEpisode = new SqliteCommand(SQL_DELETE_EPISODE, db);
-                // Add parameters
-                deleteChannel.Parameters.Add(new SqliteParameter("@id", id));
-                deleteEpisode.Parameters.Add(new SqliteParameter("@id", id));
-
-                deleteChannel.ExecuteNonQuery();
-                deleteEpisode.ExecuteNonQuery();
-
-                db.Close();
-            }
-        }
-
         public static void AddEpisode(Episode episode)
         {
             // Insert command
@@ -132,6 +112,26 @@ namespace AccessLibrary
                 insertEpisode.Parameters.Add(new SqliteParameter("@keywords", episode.Keywords));
 
                 insertEpisode.ExecuteNonQuery();
+
+                db.Close();
+            }
+        }
+
+        public static void DeleteChannel(int id)
+        {
+            // Delete commands
+            using (SqliteConnection db = new SqliteConnection(CONNECTION_STRING))
+            {
+                db.Open();
+
+                SqliteCommand deleteChannel = new SqliteCommand(SQL_DELETE_CHANNEL, db);
+                SqliteCommand deleteEpisode = new SqliteCommand(SQL_DELETE_EPISODE, db);
+                // Add parameters
+                deleteChannel.Parameters.Add(new SqliteParameter("@id", id));
+                deleteEpisode.Parameters.Add(new SqliteParameter("@id", id));
+
+                deleteChannel.ExecuteNonQuery();
+                deleteEpisode.ExecuteNonQuery();
 
                 db.Close();
             }
