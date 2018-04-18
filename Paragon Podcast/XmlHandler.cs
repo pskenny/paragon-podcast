@@ -18,10 +18,10 @@ namespace Paragon_Podcast
             return GetChannel(xmlDoc);
         }
 
-        public static Channel LoadSampleData()
+        public static Channel LoadSampleData(string url)
         {
             XmlDocument sampleXmlDoc = new XmlDocument();
-            sampleXmlDoc.Load("https://audioboom.com/channels/2399216.rss");
+            sampleXmlDoc.Load(url);
             return GetChannel(sampleXmlDoc);
         }
 

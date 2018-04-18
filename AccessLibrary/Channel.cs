@@ -19,14 +19,6 @@ namespace AccessLibrary
         public DateTime PubDate { get; set; } //date when podcast RSS was published, see here for formatting
         public String Docs { get; set; } //URL that points to documentation for RSS
         public String Webmaster { get; set; } //email for technical questions
-        public String ItunesAuthor { get; set; } //author information
-        public String ItunesSubtitle { get; set; } //description of podcast show
-        public String ItunesSummary { get; set; } //description of podcast show
-        public String ItunesOwnerName { get; set; } //owner information
-        public String ItunesOwnerEmail { get; set; } //owner email address
-        public String ItunesExplicit { get; set; } //Whether podcast episode has explicit content e.g Yes/No
-        //private itunes_image { get; set; } //podcast image TODO store image
-        public String ItunesCategory { get; set; } //podcast category
         public List<Episode> EpisodeList { get; set; } //list of episodes for this channel
 
         public Channel()

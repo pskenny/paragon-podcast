@@ -17,52 +17,49 @@ namespace AccessLibrary
 {
     public class DbAccess
     {
+        // Connection string for DB
+        private const string CONNECTION_STRING = "Filename=paragonpodcast.db";
         // Create channels table
         // Channel statements
-        private static string SQL_CREATE_CHANNELS_TABLE = "create table if not exists channels " +
-            "(id integer primary key autoincrement, title text not null, description text, link text, " +
-            "language text, copyright text, lastbuilddate text, pubdate text, docs text, " +
-            "webmaster text, itunes_author text, itunes_subtitle text, itunes_summary text, " +
-            "itunes_owner_name text, itunes_owner_email text, itunes_explicit text, itunes_image text, " +
-            "itunes_category text);";
+        private static string SQL_CREATE_CHANNELS_TABLE = "create table if not exists channels" +
+            "(id integer primary key autoincrement, title text not null, description text, link text," +
+                "language text, copyright text, lastbuilddate text, pubdate text, docs text," +
+                "webmaster text);";
         // Insert channel
-        private static string SQL_INSERT_CHANNEL_TABLE = "INSERT INTO channels " +
-            "[(id, title, description, link, language, copyright, lastbuilddate, pubdate, docs, " +
-            "webmaster, itunes_author, itunes_subtitle, itunes_summary, itunes_owner_name, itunes_owner_email, itunes_explicit, " +
-            "itunes_image, itunes_category)]  " +
-            "VALUES(@id, @title, @description, @link, @language, @copyright, @lastbuilddate, @pubdate, @docs, " +
-            "@webmaster, @itunes_author, @itunes_subtitle, @itunes_summary, @itunes_owner_name, @itunes_owner_email, @itunes_explicit, " +
-            "@itunes_image, @itunes_category);";
+        private static string SQL_INSERT_CHANNEL_TABLE = "INSERT INTO channels" +
+                "(title, description, link, language, copyright, lastbuilddate, pubdate, docs," +
+                "webmaster)" +
+                "VALUES(@title, @description, @link, @language, @copyright, @lastbuilddate, @pubdate, @docs," +
+                "@webmaster);";
         // Delete channel
         private static string SQL_DELETE_CHANNEL = "delete from channels where id = @id;";
 
         // Episode statements
         // Create episodes table
-        private static string SQL_CREATE_EPISODES_TABLE = "create table if not exists episodes (id integer primary key autoincrement, " +
-            "int channel_id not null, title text, link text, guid text, description text, enclosure_url text, enclosure_length integer, " +
-            "enclosure_type text, category text, pubdate text, itunes_author text, itunes_explicit text, " +
-            "itunes_subtitle text, itunes_summary text, itunes_duration text, keywords text, file_location text);";
+        private static string SQL_CREATE_EPISODES_TABLE = "create table if not exists episodes (id integer primary key autoincrement," +
+                "channel_id int not null, title text, link text, guid text, description text, enclosure_url text, enclosure_length integer," +
+                "enclosure_type text, category text, pubdate text, keywords text);";
         // Insert episode
-        private static string SQL_INSERT_EPISODE_TABLE = "insert into episodes " +
-            "[(id, channel_id, title, link, guid, description, enclosure_url, enclosure_length, enclosure_type, " +
-            "category, pubdate, itunes_author, itunes_explicit, itunes_subtitle, itunes_summary, itunes_duration, keywords, file_location)]" +
-            "VALUES(@id, @channel_id, @title, @link, @guid, @description, @enclosure_url, @enclosure_length, @enclosure_type, " +
-            "@category, @pubdate, @itunes_author, @itunes_explicit, @itunes_subtitle, @itunes_summary, @itunes_duration, @keywords, @file_location);";
+        private static string SQL_INSERT_EPISODE_TABLE = "insert into episodes" +
+                "(channel_id, title, link, guid, description, enclosure_url, enclosure_length, enclosure_type," +
+                "category, pubdate, keywords)" +
+                "VALUES(@channel_id, @title, @link, @guid, @description, @enclosure_url, @enclosure_length, @enclosure_type," +
+                "@category, @pubdate, @keywords);";
         // Delete channel
         private static string SQL_DELETE_EPISODE = "delete from episodes where id = @id;";
 
         public static void InitializeDatabase()
         {
-            using (SqliteConnection db = new SqliteConnection("Filename=paragonpodcast.db"))
+            using (SqliteConnection db = new SqliteConnection(CONNECTION_STRING))
             {
                 db.Open();
 
-                // create channels and episodes table
+                // Create channels and episodes table
                 SqliteCommand createChannelsTable = new SqliteCommand(SQL_CREATE_CHANNELS_TABLE, db);
                 SqliteCommand createEpisodesTable = new SqliteCommand(SQL_CREATE_EPISODES_TABLE, db);
 
-                createChannelsTable.ExecuteReader();
-                createEpisodesTable.ExecuteReader();
+                createChannelsTable.ExecuteNonQuery();
+                createEpisodesTable.ExecuteNonQuery();
 
                 db.Close();
             }
@@ -70,15 +67,13 @@ namespace AccessLibrary
 
         public static void AddChannel(Channel channel)
         {
-            // insert command
-            using (SqliteConnection db = new SqliteConnection("Filename=paragonpodcast.db"))
+            // Insert command
+            using (SqliteConnection db = new SqliteConnection(CONNECTION_STRING))
             {
                 db.Open();
 
                 SqliteCommand insertChannel = new SqliteCommand(SQL_INSERT_CHANNEL_TABLE, db);
-                // add parameters
-                // TODO important, fix id (check db, +1)
-                //insertChannel.Parameters.Add(new SqliteParameter("@id", channel.id));
+                // Add parameters
                 insertChannel.Parameters.Add(new SqliteParameter("@title", channel.Title));
                 insertChannel.Parameters.Add(new SqliteParameter("@description", channel.Description));
                 insertChannel.Parameters.Add(new SqliteParameter("@link", channel.Link));
@@ -88,71 +83,53 @@ namespace AccessLibrary
                 insertChannel.Parameters.Add(new SqliteParameter("@pubdate", channel.PubDate));
                 insertChannel.Parameters.Add(new SqliteParameter("@docs", channel.Docs));
                 insertChannel.Parameters.Add(new SqliteParameter("@webmaster", channel.Webmaster));
-                insertChannel.Parameters.Add(new SqliteParameter("@itunes_author", channel.ItunesAuthor));
-                insertChannel.Parameters.Add(new SqliteParameter("@itunes_subtitle", channel.ItunesSubtitle));
-                insertChannel.Parameters.Add(new SqliteParameter("@itunes_summary", channel.ItunesSummary));
-                insertChannel.Parameters.Add(new SqliteParameter("@itunes_owner_name", channel.ItunesOwnerName));
-                insertChannel.Parameters.Add(new SqliteParameter("@itunes_owner_email", channel.ItunesOwnerEmail));
-                insertChannel.Parameters.Add(new SqliteParameter("@itunes_explicit", channel.ItunesExplicit));
-                //insertChannel.Parameters.Add(new SqliteParameter("@itunes_image", channel.itunesImage));
-                insertChannel.Parameters.Add(new SqliteParameter("@itunes_category", channel.ItunesCategory));
 
-                insertChannel.ExecuteReader();
+                insertChannel.ExecuteNonQuery();
+
+                foreach (Episode e in channel.EpisodeList)
+                {
+                    AddEpisode(e, db);
+                }
 
                 db.Close();
             }
         }
 
+        public static void AddEpisode(Episode episode, SqliteConnection db)
+        {
+            // Insert command
+            SqliteCommand insertEpisode = new SqliteCommand(SQL_INSERT_EPISODE_TABLE, db);
+            // Add parameters
+            insertEpisode.Parameters.Add(new SqliteParameter("@channel_id", episode.ChannelId));
+            insertEpisode.Parameters.Add(new SqliteParameter("@title", episode.Title));
+            insertEpisode.Parameters.Add(new SqliteParameter("@link", episode.Link));
+            insertEpisode.Parameters.Add(new SqliteParameter("@guid", episode.Guid));
+            insertEpisode.Parameters.Add(new SqliteParameter("@description", episode.Description));
+            insertEpisode.Parameters.Add(new SqliteParameter("@enclosure_url", episode.EnclosureUrl));
+            insertEpisode.Parameters.Add(new SqliteParameter("@enclosure_length", episode.EnclosureLength));
+            insertEpisode.Parameters.Add(new SqliteParameter("@enclosure_type", episode.EnclosureType));
+            insertEpisode.Parameters.Add(new SqliteParameter("@category", episode.Category));
+            insertEpisode.Parameters.Add(new SqliteParameter("@pubdate", episode.PubDate));
+            insertEpisode.Parameters.Add(new SqliteParameter("@keywords", episode.Keywords));
+
+            insertEpisode.ExecuteNonQuery();
+        }
+
         public static void DeleteChannel(int id)
         {
-            // delete commands
-            using (SqliteConnection db = new SqliteConnection("Filename=paragonpodcast.db"))
+            // Delete commands
+            using (SqliteConnection db = new SqliteConnection(CONNECTION_STRING))
             {
                 db.Open();
 
                 SqliteCommand deleteChannel = new SqliteCommand(SQL_DELETE_CHANNEL, db);
                 SqliteCommand deleteEpisode = new SqliteCommand(SQL_DELETE_EPISODE, db);
-                // add parameters
+                // Add parameters
                 deleteChannel.Parameters.Add(new SqliteParameter("@id", id));
                 deleteEpisode.Parameters.Add(new SqliteParameter("@id", id));
 
-                deleteChannel.ExecuteReader();
-                deleteEpisode.ExecuteReader();
-
-                db.Close();
-            }
-        }
-
-        public static void AddEpisode(Episode episode)
-        {
-            // insert command
-            using (SqliteConnection db = new SqliteConnection("Filename=paragonpodcast.db"))
-            {
-                db.Open();
-
-                SqliteCommand insertEpisode = new SqliteCommand(SQL_INSERT_EPISODE_TABLE, db);
-                // add parameters
-                // TODO important, fix id (check db, +1)
-                //insertChannel.Parameters.Add(new SqliteParameter("@id", id));
-                insertEpisode.Parameters.Add(new SqliteParameter("@channel_id", episode.ChannelId));
-                insertEpisode.Parameters.Add(new SqliteParameter("@title", episode.Title));
-                insertEpisode.Parameters.Add(new SqliteParameter("@link", episode.Link));
-                insertEpisode.Parameters.Add(new SqliteParameter("@guid", episode.Guid));
-                insertEpisode.Parameters.Add(new SqliteParameter("@description", episode.Description));
-                insertEpisode.Parameters.Add(new SqliteParameter("@enclosure_url", episode.EnclosureUrl));
-                insertEpisode.Parameters.Add(new SqliteParameter("@enclosure_length", episode.EnclosureLength));
-                insertEpisode.Parameters.Add(new SqliteParameter("@enclosure_type", episode.EnclosureType));
-                insertEpisode.Parameters.Add(new SqliteParameter("@category", episode.Category));
-                insertEpisode.Parameters.Add(new SqliteParameter("@pubdate", episode.PubDate));
-                insertEpisode.Parameters.Add(new SqliteParameter("@itunes_author", episode.ItunesAuthor));
-                insertEpisode.Parameters.Add(new SqliteParameter("@itunes_explicit", episode.ItunesExplicit));
-                insertEpisode.Parameters.Add(new SqliteParameter("@itunes_subtitle", episode.ItunesSubtitle));
-                insertEpisode.Parameters.Add(new SqliteParameter("@itunes_summary", episode.ItunesSummary));
-                insertEpisode.Parameters.Add(new SqliteParameter("@itunes_duration", episode.ItunesDuration));
-                insertEpisode.Parameters.Add(new SqliteParameter("@keywords", episode.Keywords));
-                insertEpisode.Parameters.Add(new SqliteParameter("@file_location", episode.FileLocation));
-
-                insertEpisode.ExecuteReader();
+                deleteChannel.ExecuteNonQuery();
+                deleteEpisode.ExecuteNonQuery();
 
                 db.Close();
             }
@@ -162,7 +139,7 @@ namespace AccessLibrary
         {
             ObservableCollection<Channel> channelList = new ObservableCollection<Channel>();
 
-            using (SqliteConnection db = new SqliteConnection("Filename=paragonpodcast.db"))
+            using (SqliteConnection db = new SqliteConnection(CONNECTION_STRING))
             {
                 db.Open();
 
@@ -184,14 +161,6 @@ namespace AccessLibrary
                     channel.PubDate = DateTime.Parse(channelsReader["pubdate"].ToString());
                     channel.Docs = channelsReader["docs"].ToString();
                     channel.Webmaster = channelsReader["webmaster"].ToString();
-                    channel.ItunesAuthor = channelsReader["itunes_author"].ToString();
-                    channel.ItunesSubtitle = channelsReader["itunes_subtitle"].ToString();
-                    channel.ItunesSummary = channelsReader["itunes_summary"].ToString();
-                    channel.ItunesOwnerName = channelsReader["itunes_owner_name"].ToString();
-                    channel.ItunesOwnerEmail = channelsReader["itunes_owner_email"].ToString();
-                    channel.ItunesExplicit = channelsReader["itunes_explicit"].ToString();
-                    //channel.ItunesImage = channelsReader["itunes_image"].ToString();
-                    channel.ItunesCategory = channelsReader["itunes_category"].ToString();
 
                     // Add channel to list
                     SqliteCommand selectEpisodesCommand = new SqliteCommand("select * from episodes where id = " + channel.Id, db);
@@ -214,13 +183,7 @@ namespace AccessLibrary
                             episode.EnclosureType = episodesReader["enclosure_type"].ToString();
                             episode.Category = episodesReader["category"].ToString();
                             episode.PubDate = DateTime.Parse(episodesReader["pubdate"].ToString());
-                            episode.ItunesAuthor = episodesReader["itunes_author"].ToString();
-                            episode.ItunesExplicit = episodesReader["itunes_explicit"].ToString();
-                            episode.ItunesSubtitle = episodesReader["itunes_subtitle"].ToString();
-                            episode.ItunesSummary = episodesReader["itunes_summary"].ToString();
-                            episode.ItunesDuration = episodesReader["itunes_duration"].ToString();
                             episode.Keywords = episodesReader["keywords"].ToString();
-                            episode.FileLocation = episodesReader["file_location"].ToString();
 
                             // Add episode associated with channel
                             channel.EpisodeList.Add(episode);
