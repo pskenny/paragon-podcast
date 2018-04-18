@@ -27,8 +27,9 @@ namespace Paragon_Podcast
 #if DEBUG
             try
             {
-                // Load test podcast from URL
-                channelList.Add(XmlHandler.LoadSampleData());
+                // Load test podcasts from URLs
+                channelList.Add(XmlHandler.LoadSampleData("https://audioboom.com/channels/2399216.rss"));
+                channelList.Add(XmlHandler.LoadSampleData("https://rss.acast.com/intelligencesquared"));
 
                 // Load from local data
                 Channel ch1 = new Channel();
