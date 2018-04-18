@@ -120,7 +120,11 @@ namespace Paragon_Podcast
 
             try
             {
-                channelList.Add(XmlHandler.GetChannel(userInput));
+                Channel channel = XmlHandler.GetChannel(userInput);
+                // Add channel to list
+                channelList.Add(channel);
+                // Add channel to DB
+                DbAccess.AddChannel(channel);
             }
             catch
             {
