@@ -86,35 +86,33 @@ namespace AccessLibrary
 
                 insertChannel.ExecuteNonQuery();
 
+                foreach (Episode e in channel.EpisodeList)
+                {
+                    AddEpisode(e, db);
+                }
+
                 db.Close();
             }
         }
 
-        public static void AddEpisode(Episode episode)
+        public static void AddEpisode(Episode episode, SqliteConnection db)
         {
             // Insert command
-            using (SqliteConnection db = new SqliteConnection(CONNECTION_STRING))
-            {
-                db.Open();
+            SqliteCommand insertEpisode = new SqliteCommand(SQL_INSERT_EPISODE_TABLE, db);
+            // Add parameters
+            insertEpisode.Parameters.Add(new SqliteParameter("@channel_id", episode.ChannelId));
+            insertEpisode.Parameters.Add(new SqliteParameter("@title", episode.Title));
+            insertEpisode.Parameters.Add(new SqliteParameter("@link", episode.Link));
+            insertEpisode.Parameters.Add(new SqliteParameter("@guid", episode.Guid));
+            insertEpisode.Parameters.Add(new SqliteParameter("@description", episode.Description));
+            insertEpisode.Parameters.Add(new SqliteParameter("@enclosure_url", episode.EnclosureUrl));
+            insertEpisode.Parameters.Add(new SqliteParameter("@enclosure_length", episode.EnclosureLength));
+            insertEpisode.Parameters.Add(new SqliteParameter("@enclosure_type", episode.EnclosureType));
+            insertEpisode.Parameters.Add(new SqliteParameter("@category", episode.Category));
+            insertEpisode.Parameters.Add(new SqliteParameter("@pubdate", episode.PubDate));
+            insertEpisode.Parameters.Add(new SqliteParameter("@keywords", episode.Keywords));
 
-                SqliteCommand insertEpisode = new SqliteCommand(SQL_INSERT_EPISODE_TABLE, db);
-                // Add parameters
-                insertEpisode.Parameters.Add(new SqliteParameter("@channel_id", episode.ChannelId));
-                insertEpisode.Parameters.Add(new SqliteParameter("@title", episode.Title));
-                insertEpisode.Parameters.Add(new SqliteParameter("@link", episode.Link));
-                insertEpisode.Parameters.Add(new SqliteParameter("@guid", episode.Guid));
-                insertEpisode.Parameters.Add(new SqliteParameter("@description", episode.Description));
-                insertEpisode.Parameters.Add(new SqliteParameter("@enclosure_url", episode.EnclosureUrl));
-                insertEpisode.Parameters.Add(new SqliteParameter("@enclosure_length", episode.EnclosureLength));
-                insertEpisode.Parameters.Add(new SqliteParameter("@enclosure_type", episode.EnclosureType));
-                insertEpisode.Parameters.Add(new SqliteParameter("@category", episode.Category));
-                insertEpisode.Parameters.Add(new SqliteParameter("@pubdate", episode.PubDate));
-                insertEpisode.Parameters.Add(new SqliteParameter("@keywords", episode.Keywords));
-
-                insertEpisode.ExecuteNonQuery();
-
-                db.Close();
-            }
+            insertEpisode.ExecuteNonQuery();
         }
 
         public static void DeleteChannel(int id)
