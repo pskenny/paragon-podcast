@@ -138,14 +138,22 @@ namespace Paragon_Podcast
             addFlyout.Hide();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void deleteButton_Click(object sender, RoutedEventArgs e)
         {
+            //ListViewItem local = ((sender as Button).Tag as ListViewItem);
+            try
+            {
+                string channelToRemove = (sender as Button).Tag as String;
+                Channel toRemove = channelList.FirstOrDefault(a => a.Title.Equals(channelToRemove));
+                if (toRemove != null)
+                {
+                    channelList.Remove(toRemove);
+                }
 
+                DbAccess.DeleteChannel(toRemove.Id);
+
+            }
+            catch { }
         }
     }
 }
