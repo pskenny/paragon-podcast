@@ -58,8 +58,8 @@ namespace AccessLibrary
                 SqliteCommand createChannelsTable = new SqliteCommand(SQL_CREATE_CHANNELS_TABLE, db);
                 SqliteCommand createEpisodesTable = new SqliteCommand(SQL_CREATE_EPISODES_TABLE, db);
 
-                createChannelsTable.ExecuteReader();
-                createEpisodesTable.ExecuteReader();
+                createChannelsTable.ExecuteNonQuery();
+                createEpisodesTable.ExecuteNonQuery();
 
                 db.Close();
             }
@@ -84,7 +84,7 @@ namespace AccessLibrary
                 insertChannel.Parameters.Add(new SqliteParameter("@docs", channel.Docs));
                 insertChannel.Parameters.Add(new SqliteParameter("@webmaster", channel.Webmaster));
 
-                insertChannel.ExecuteReader();
+                insertChannel.ExecuteNonQuery();
 
                 db.Close();
             }
@@ -103,8 +103,8 @@ namespace AccessLibrary
                 deleteChannel.Parameters.Add(new SqliteParameter("@id", id));
                 deleteEpisode.Parameters.Add(new SqliteParameter("@id", id));
 
-                deleteChannel.ExecuteReader();
-                deleteEpisode.ExecuteReader();
+                deleteChannel.ExecuteNonQuery();
+                deleteEpisode.ExecuteNonQuery();
 
                 db.Close();
             }
@@ -131,7 +131,7 @@ namespace AccessLibrary
                 insertEpisode.Parameters.Add(new SqliteParameter("@pubdate", episode.PubDate));
                 insertEpisode.Parameters.Add(new SqliteParameter("@keywords", episode.Keywords));
 
-                insertEpisode.ExecuteReader();
+                insertEpisode.ExecuteNonQuery();
 
                 db.Close();
             }
