@@ -24,12 +24,15 @@ namespace Paragon_Podcast
         public MainPage()
         {
             this.InitializeComponent();
-#if DEBUG
             try
             {
+                // Get channels from DB if available
+                channelList = DbAccess.GetChannels();
+#if DEBUG
+                // Load test channels in debug mode
                 // Load test podcasts from URLs
-                channelList.Add(XmlHandler.LoadSampleData("https://audioboom.com/channels/2399216.rss"));
-                channelList.Add(XmlHandler.LoadSampleData("https://rss.acast.com/intelligencesquared"));
+                channelList.Add(XmlHandler.GetChannel("https://audioboom.com/channels/2399216.rss"));
+                channelList.Add(XmlHandler.GetChannel("https://rss.acast.com/intelligencesquared"));
 
                 // Load from local data
                 Channel ch1 = new Channel();
@@ -53,15 +56,12 @@ namespace Paragon_Podcast
 
                 channelList.Add(ch1);
                 channelList.Add(ch2);
+#endif
             }
             catch (Exception e)
             {
                 //todo add exception handleing
             }
-#else
-            // Load podcasts in DB
-#endif
-
             LVchannelList.ItemsSource = channelList;
         }
 

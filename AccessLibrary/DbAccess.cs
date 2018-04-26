@@ -6,13 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-/*
- * https://stackoverflow.com/questions/26824464/parsing-itunes-podcast-xml-in-c-sharp-using-system-xml
- * https://stackoverflow.com/questions/43565598/uwp-create-database-with-sqlite
- * https://translate.google.com/translate?hl=en&sl=zh-CN&tl=en&u=http%3A%2F%2Fwww.cnblogs.com%2Fms-uap%2Fp%2F4798269.html&sandbox=1
- * 
- */
-
 namespace AccessLibrary
 {
     public class DbAccess

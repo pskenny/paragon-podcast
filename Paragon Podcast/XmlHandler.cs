@@ -18,13 +18,6 @@ namespace Paragon_Podcast
             return GetChannel(xmlDoc);
         }
 
-        public static Channel LoadSampleData(string url)
-        {
-            XmlDocument sampleXmlDoc = new XmlDocument();
-            sampleXmlDoc.Load(url);
-            return GetChannel(sampleXmlDoc);
-        }
-
         public static Channel GetChannel(XmlDocument xmlDoc)
         {
             Channel channel = new Channel();
@@ -48,11 +41,9 @@ namespace Paragon_Podcast
             channel.Copyright = channelCopyright;
 
             channelSubNode = channelNode.SelectSingleNode("lastBuildDate");
-            // TODO change from new datetime if null
             channel.LastBuildDate = channelSubNode != null ? DateTime.Parse(channelSubNode.InnerText) : new DateTime();
 
             channelSubNode = channelNode.SelectSingleNode("pubDate");
-            // TODO change from new datetime if null
             channel.PubDate = channelSubNode != null ? DateTime.Parse(channelSubNode.InnerText) : new DateTime();
 
             channelSubNode = channelNode.SelectSingleNode("docs");
@@ -63,36 +54,6 @@ namespace Paragon_Podcast
             string channelWebMaster = channelSubNode != null ? channelSubNode.InnerText : "";
             channel.Webmaster = channelWebMaster;
 
-            /* TODO fix, iTunes tags, uses namespaces
-            channelSubNode = channelNode.SelectSingleNode("");
-            string channelTitle = channelSubNode != null ? channelSubNode.InnerText : "";
-            channel.itunesAuthor = channelTitle;
-
-            channelSubNode = channelNode.SelectSingleNode("itunesSubtitle");
-            string channelTitle = channelSubNode != null ? channelSubNode.InnerText : "";
-            channel.itunesSubtitle = channelTitle;
-
-            channelSubNode = channelNode.SelectSingleNode("itunesSummary");
-            string channelTitle = channelSubNode != null ? channelSubNode.InnerText : "";
-            channel.itunesSummary = channelTitle;
-
-            channelSubNode = channelNode.SelectSingleNode("itunesOwner_name");
-            string channelTitle = channelSubNode != null ? channelSubNode.InnerText : "";
-            channel.itunesOwner_name = channelTitle;
-
-            channelSubNode = channelNode.SelectSingleNode("itunesOwner_email");
-            string channelTitle = channelSubNode != null ? channelSubNode.InnerText : "";
-            channel.itunesOwner_email = channelTitle;
-
-            channelSubNode = channelNode.SelectSingleNode("itunesExplicit");
-            string channelTitle = channelSubNode != null ? channelSubNode.InnerText : "";
-            channel.itunesExplicit = channelTitle;
-
-            channelSubNode = channelNode.SelectSingleNode("itunesCategory");
-            string channelTitle = channelSubNode != null ? channelSubNode.InnerText : "";
-            channel.itunesCategory = channelTitle;
-            */
-
             //ITEMS
             // Parse the items in the RSS file
             XmlNodeList itemNodes = xmlDoc.SelectNodes("rss/channel/item");
@@ -101,7 +62,6 @@ namespace Paragon_Podcast
             foreach (XmlNode rssNode in itemNodes)
             {
                 Episode episode = new Episode();
-                // TODO add id and channel id
 
                 XmlNode rssSubNode = rssNode.SelectSingleNode("title");
                 string title = rssSubNode != null ? rssSubNode.InnerText : "";
@@ -119,7 +79,6 @@ namespace Paragon_Podcast
                 string description = rssSubNode != null ? rssSubNode.InnerText : "";
                 episode.Description = description;
 
-                // TODO fix, these are attributes
                 rssSubNode = rssNode.SelectSingleNode("enclosure/@url");
                 string enclosureUrl = rssSubNode.Value != null ? rssSubNode.Value : "";
                 episode.EnclosureUrl = enclosureUrl;
@@ -139,28 +98,6 @@ namespace Paragon_Podcast
                 rssSubNode = rssNode.SelectSingleNode("pubDate");
                 string pubDate = rssSubNode != null ? rssSubNode.InnerText : "";
                 episode.PubDate = DateTime.Parse(pubDate);
-
-                /* TODO fix, these use a namespace
-                rssSubNode = rssNode.SelectSingleNode("itunesAuthor");
-                string itunesAuthor = rssSubNode != null ? rssSubNode.InnerText : "";
-                episode.itunesAuthor = itunesAuthor;
-
-                rssSubNode = rssNode.SelectSingleNode("itunesExplicit");
-                string itunesExplicit = rssSubNode != null ? rssSubNode.InnerText : "";
-                episode.itunesExplicit = itunesExplicit;
-
-                rssSubNode = rssNode.SelectSingleNode("itunesSubtitle");
-                string itunesSubtitle = rssSubNode != null ? rssSubNode.InnerText : "";
-                episode.itunesSubtitle = itunesSubtitle;
-
-                rssSubNode = rssNode.SelectSingleNode("itunesSummary");
-                string itunesSummary = rssSubNode != null ? rssSubNode.InnerText : "";
-                episode.itunesSummary = itunesSummary;
-
-                rssSubNode = rssNode.SelectSingleNode("itunesDuration");
-                string itunesDuration = rssSubNode != null ? rssSubNode.InnerText : "";
-                episode.itunesDuration = itunesDuration;
-                */
 
                 rssSubNode = rssNode.SelectSingleNode("keywords");
                 string keywords = rssSubNode != null ? rssSubNode.InnerText : "";
